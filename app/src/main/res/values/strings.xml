@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple HTML Tester</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="action_save">Save</string>
+    <string name="action_return_to_saved">Return to saved</string>
+    <string name="action_restore_default">Restore default</string>
+</resources>
