@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                mEditorFragment = ((EditorFragment)mSectionsPagerAdapter.getRegisteredFragment(0));
                 mSourceCode = mEditorFragment.getmSourceCode();
                 mPreviewFragment.setmSourceCode(mSourceCode);
 
@@ -277,8 +278,6 @@ public class MainActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             mEditor = (EditText) rootView.findViewById(R.id.editText);
             setTextToEditor();
-            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
 
