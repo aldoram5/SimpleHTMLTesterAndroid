@@ -8,13 +8,18 @@
         android:title="@string/action_save"
         app:showAsAction="never" />
     <item
-    android:id="@+id/action_return_to_saved"
-    android:orderInCategory="100"
-    android:title="@string/action_return_to_saved"
-    app:showAsAction="never" />
+        android:id="@+id/action_return_to_saved"
+        android:orderInCategory="100"
+        android:title="@string/action_return_to_saved"
+        app:showAsAction="never" />
     <item
-    android:id="@+id/action_restore_default"
-    android:orderInCategory="100"
-    android:title="@string/action_restore_default"
-    app:showAsAction="never" />
+        android:id="@+id/action_restore_default"
+        android:orderInCategory="100"
+        android:title="@string/action_restore_default"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_insert_tag"
+        android:orderInCategory="100"
+        android:title="@string/action_insert_Tag"
+        app:showAsAction="never" />
 </menu>

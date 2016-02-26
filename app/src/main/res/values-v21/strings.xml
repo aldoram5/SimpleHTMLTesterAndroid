@@ -3,4 +3,5 @@
     <string name="action_save">Save</string>
     <string name="action_return_to_saved">Return to saved</string>
     <string name="action_restore_default">Restore default</string>
+    <string name="action_insert_Tag">Insert Tag</string>
 </resources>
