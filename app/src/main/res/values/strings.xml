@@ -7,4 +7,6 @@
     <string name="action_restore_default">Restore default</string>
     <string name="send_to">Send your HTML</string>
     <string name="action_insert_Tag">Insert Tag</string>
+    <string name="tag_dialog_text"><![CDATA[Write the tag that you want to add without < >]]></string>
+
 </resources>

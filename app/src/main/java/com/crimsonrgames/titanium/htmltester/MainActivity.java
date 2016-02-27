@@ -48,13 +48,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AddTagDialogFragment.OnAddTagDialogFragmentInteractionListener{
 
 
     public static final String TAG = "MainActivity";
     public static final String SAVED = "Saved";
     public static final String RESTORED_TO_DEFAULT_TEXT = "Restored to default text";
     public static final String RESTORED_TO_LAST_SAVED_FILE = "Restored to last saved file";
+    public static final String TAG_PATTERN = "<%s> </%s>";
     private static String DEFAULT_HTML_STRING = "<html><body><h1>TODO: Write your own code here!!</h1></body></html>";
 
     private static String DEFAULT_FILE_NAME = "test.html";
@@ -115,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 mEditorFragment = ((EditorFragment)mSectionsPagerAdapter.getRegisteredFragment(0));
+                if(mEditorFragment == null) return;
                 mSourceCode = mEditorFragment.getmSourceCode();
                 mPreviewFragment = ((PreviewFragment)mSectionsPagerAdapter.getRegisteredFragment(1));
+                if(mPreviewFragment == null) return;
                 mPreviewFragment.setmSourceCode(mSourceCode);
 
             }
@@ -187,16 +190,20 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 break;
             case R.id.action_insert_tag:
-                //TODO: Add a FragmentDialog to get the tag that the user wants to insert
+                showAddTagDialog();
                 break;
-        }
-        if (id == R.id.action_save) {
-
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void showAddTagDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        AddTagDialogFragment addTagDialog = new AddTagDialogFragment();
+        addTagDialog.show(fm,TAG);
+    }
+
 
     private boolean writeHTMLToDefaultFile(String HTMLString) {
 
@@ -242,6 +249,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,fileContents);
         if(fileContents.isEmpty()) fileContents = DEFAULT_HTML_STRING;
         return fileContents;
+    }
+
+    /***
+     * Overriden from AddTagDialogFragment.OnAddTagDialogFragmentInteractionListener
+     * Receives the input from the AddTagDialogFragment
+     * @param tag the input tag
+     */
+    @Override
+    public void onFinishTagEditDialog(String tag) {
+
+        mEditorFragment = ((EditorFragment)mSectionsPagerAdapter.getRegisteredFragment(0));
+        mEditorFragment.insertTextAtCursorPoint(String.format(TAG_PATTERN, tag,tag));
+
     }
 
 
