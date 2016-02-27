@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 mEditorFragment = ((EditorFragment)mSectionsPagerAdapter.getRegisteredFragment(0));
                 mSourceCode = mEditorFragment.getmSourceCode();
+                mPreviewFragment = ((PreviewFragment)mSectionsPagerAdapter.getRegisteredFragment(1));
                 mPreviewFragment.setmSourceCode(mSourceCode);
 
             }
