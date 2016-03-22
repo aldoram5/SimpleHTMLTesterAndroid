@@ -39,6 +39,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -398,7 +399,9 @@ public class MainActivity extends AppCompatActivity implements AddTagDialogFragm
         }
         private void loadHTMLInWebView(){
             if(mWebView != null){
-                mWebView.loadData(mSourceCode, "text/html", null);
+                WebSettings settings = mWebView.getSettings();
+                settings.setDefaultTextEncodingName("utf-8");
+                mWebView.loadData(mSourceCode, "text/html; charset=utf-8","UTF-8");
             }
         }
 
