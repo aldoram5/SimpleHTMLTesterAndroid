@@ -2,7 +2,7 @@
 
 Simple HTMLTester is an Android app designed to help developers and enthusiasts to write and test HTML and Javascript right from their Android device.
 
-##Functionality 
+## Functionality 
 * Write your code in editor and instantly see it working in the preview tab!
 * Easily revert to last saved point or restore to the default!
 * Share your HTML through many apps with the FAB send Button!
