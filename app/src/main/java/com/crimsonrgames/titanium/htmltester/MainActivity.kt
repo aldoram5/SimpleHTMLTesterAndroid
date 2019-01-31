@@ -183,10 +183,11 @@ class MainActivity : AppCompatActivity(), AddTagDialogFragment.OnAddTagDialogFra
 
     private fun showAddTagDialog() {
         val input = EditText(this)
-        AlertDialog.Builder(this)
+        input.setSingleLine()
+
+        val dialog = AlertDialog.Builder(this)
                 .setTitle(R.string.title_add_tag)
                 .setMessage(R.string.tag_dialog_text)
-                .setView(input)
                 .setPositiveButton(R.string.action_insert_Tag){ dialogInterface, i ->
                     mEditorFragment?.let {
                         val tag = input.text.toString()
@@ -197,7 +198,9 @@ class MainActivity : AppCompatActivity(), AddTagDialogFragment.OnAddTagDialogFra
                     dialogInterface.cancel()
 
                 }
-                .show()
+                .create()
+        dialog.setView(input,20,0,20,0)
+        dialog.show()
     }
 
 
