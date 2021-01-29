@@ -19,11 +19,8 @@
  */
 package com.crimsonrgames.titanium.htmltester
 
-import android.support.v4.app.DialogFragment
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +29,7 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
 
 
 /**
@@ -55,9 +53,9 @@ class AddTagDialogFragment : DialogFragment(), TextView.OnEditorActionListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add_tag_dialog, container)
         mEditText = view.findViewById<View>(R.id.editTagName) as EditText
-        dialog.setTitle(TITLE)
+        dialog?.setTitle(TITLE)
         mEditText!!.requestFocus()
-        dialog.window!!.setSoftInputMode(
+        dialog?.window!!.setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         mEditText!!.setOnEditorActionListener(this)
         return view
@@ -74,12 +72,12 @@ class AddTagDialogFragment : DialogFragment(), TextView.OnEditorActionListener {
         return false
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnAddTagDialogFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnAddTagDialogFragmentInteractionListener")
+            throw RuntimeException(context.toString() + " must implement OnAddTagDialogFragmentInteractionListener")
         }
     }
 

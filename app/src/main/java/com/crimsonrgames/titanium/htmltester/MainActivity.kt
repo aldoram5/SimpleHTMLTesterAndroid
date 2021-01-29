@@ -22,17 +22,8 @@
 package com.crimsonrgames.titanium.htmltester
 
 import android.content.Intent
-import android.support.design.widget.TabLayout
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -40,10 +31,18 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
 
 import java.io.File
 import java.io.FileInputStream
@@ -421,7 +420,7 @@ class MainActivity : AppCompatActivity(), AddTagDialogFragment.OnAddTagDialogFra
 
         internal var registeredFragments = SparseArray<Fragment>()
 
-        override fun getItem(position: Int): Fragment? {
+        override fun getItem(position: Int): Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a EditorFragment (defined as a static inner class below).
             if (mEditorFragment == null) {
@@ -430,7 +429,7 @@ class MainActivity : AppCompatActivity(), AddTagDialogFragment.OnAddTagDialogFra
             if (mPreviewFragment == null) {
                 mPreviewFragment = PreviewFragment.newInstance(mSourceCode)
             }
-            return if (position == 0) mEditorFragment else mPreviewFragment
+            return if (position == 0) mEditorFragment!! else mPreviewFragment!!
         }
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
