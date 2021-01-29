@@ -379,7 +379,7 @@ class MainActivity : AppCompatActivity(), AddTagDialogFragment.OnAddTagDialogFra
             if (mWebView != null) {
                 val settings = mWebView!!.settings
                 settings.defaultTextEncodingName = "utf-8"
-                mWebView!!.loadData(mSourceCode, "text/html; charset=utf-8", "UTF-8")
+                mSourceCode?.let { mWebView!!.loadData(it, "text/html; charset=utf-8", "UTF-8") }
             }
         }
 
